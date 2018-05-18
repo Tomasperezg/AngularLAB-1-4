@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="ToDoApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="form">
+  <h1 id="Btext">TODO List</h1>
+  <h5 id="text">A place to store the things you have to do!</h5>
+
+    <input id="add" type="text" placeholder="Filter your to-dos"><br>
+
+    <div ng-controller="ToDoController as ctrl">
+
+    <p ng-repeat="nums in ctrl.nums" ng-class="{strike: deleted}">
+    <input type="submit" id="complete" value="Complete" onclick="CompleteTask()" ng-model="deleted" > {{ nums }}
+    <input id="delete" type="submit" value="X" onclick="TaskCompleted()"></p>
+    </div>
+
+    <input id="add" type="text" placeholder="Add your to do"><br>
+    <input id="AddI"type="submit" value="Add" onclick="CompletedTask()">
+</div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="script.js"></script>
+  <script src="controller.js"></script>
+
+</body>
+
+</html>
