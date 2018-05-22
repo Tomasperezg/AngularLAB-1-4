@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="ToDoApp">
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -10,25 +11,31 @@
 <body>
 
 <div class="form">
-  <h1 id="Btext">TODO List</h1>
-  <h5 id="text">A place to store the things you have to do!</h5>
+    <h1 id="Btext">TODO List</h1>
+    <h5 id="text">A place to store the things you have to do!</h5>
 
-    <input id="add" type="text" placeholder="Filter your to-dos"><br>
+      <input id="add" type="text" placeholder="Filter your to-dos" ng-model="taskFilter"><br> <!--textarea -->
 
     <div ng-controller="ToDoController as ctrl">
+      <div ng-repeat="nums in ctrl.nums | filter: taskFilter" ng-controller="GoDoController as done">
 
-    <p ng-repeat="nums in ctrl.nums" ng-class="{strike: deleted}">
-    <input type="submit" id="complete" value="Complete" onclick="CompleteTask()" ng-model="deleted" > {{ nums }}
-    <input id="delete" type="submit" value="X" onclick="TaskCompleted()"></p>
+        <div ng-class='{div: true, Cstyle: class1 }'ng-if="click">
+
+              <input type="button" id="complete" value="Complete" ng-click="ChangeStyle()" ng-init="text=true" ng-if="clicked">
+              {{ nums.nums }}
+              <input id="delete" type="button" value="X" ng-click="removeItem()"> <!--x button -->
+        </div>
+      </div>
+        <input id="add" type="text" placeholder="Add your to do" ng-model="input"><br> <!-- textarea -->
+        <input id="AddI"type="button" value="Add" ng-click="done.addItems(input)"> <!--this is the add button -->
     </div>
-
-    <input id="add" type="text" placeholder="Add your to do"><br>
-    <input id="AddI"type="submit" value="Add" onclick="CompletedTask()">
 </div>
 
 
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- module always goes as second-->
   <script src="controller.js"></script>
 
 </body>
